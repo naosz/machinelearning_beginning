@@ -9,7 +9,7 @@ X = iris.data
 y = iris.target
 
 #define the model
-knn = KNeighborsClassifier(n_neighbors=1)
+knn = KNeighborsClassifier(n_neighbors=2)
 
 #define logistic regression
 logreg = LogisticRegression()
@@ -21,17 +21,18 @@ knn.fit(X,y)
 X_new = [[3, 5, 4, 2], [5, 4, 3, 2]]
 
 #predict 2nd sample
-second_test = knn.predict(X_new)
-print("Knn Prediciton",second_test)
+knn_pred = knn.predict(X)
 
 #train logreg
 logreg.fit(X,y)
 
-y_pred = logreg.predict(X)
-print(len(y_pred))
-
-second_test_logreg = logreg.predict(X_new)
-print(second_test_logreg)
+log_pred = logreg.predict(X)
+#print(len(log_pred))
 
 #compute classification accuracy for logReg model
-print(metrics.accuracy_score(y,y_pred))
+print("knn",metrics.accuracy_score(y,knn_pred))
+print("log",metrics.accuracy_score(y,log_pred))
+
+for i in range(5):
+    print(i)
+
